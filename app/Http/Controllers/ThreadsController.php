@@ -13,11 +13,11 @@ class ThreadsController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-        public function __construct()
-        {
-            $this->middleware('auth')->only('store');
-        }
-        
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $threads = Thread::latest()->get();
@@ -31,7 +31,7 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        //
+        return view('threads.create');
     }
 
     /**
