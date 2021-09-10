@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-use function PHPSTORM_META\map;
 
 class CreateThreadsTest extends TestCase
 
@@ -14,13 +13,14 @@ class CreateThreadsTest extends TestCase
 
     /** @test */
 
-    public function a_guests_may_not_create_threads()
+    public function guests_may_not_create_threads()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
         $thread = make('App\Thread');
-
-        $this->post('/threads', $thread->toArray());
+        
+        $this->post('/threads', $thread->toArray());    
+        
     }
 
     /** @test */
